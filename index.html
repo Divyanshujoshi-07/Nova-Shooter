@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>NOVA BLASTER — Arcade Space Shooter</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Scanline & noise overlay -->
+  <div class="crt-overlay"></div>
+
+  <!-- ══ HUD ══ -->
+  <div id="hud" class="hud hidden">
+    <div class="hud-left">
+      <span class="hud-label">SCORE</span>
+      <span class="hud-value" id="hud-score">0</span>
+    </div>
+    <div class="hud-center">
+      <span class="hud-label">WAVE</span>
+      <span class="hud-value" id="hud-wave">1</span>
+    </div>
+    <div class="hud-right">
+      <span class="hud-label">LIVES</span>
+      <div id="hud-lives" class="lives-row"></div>
+    </div>
+  </div>
+
+  <!-- ══ Canvas ══ -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- ══ SCREENS ══ -->
+
+  <!-- Title screen -->
+  <div id="screen-title" class="screen">
+    <div class="screen-inner">
+      <div class="game-logo">
+        <span class="logo-nova">NOVA</span>
+        <span class="logo-blaster">BLASTER</span>
+      </div>
+      <p class="screen-sub">An arcade space shooter</p>
+
+      <div class="controls-grid">
+        <div class="ctrl-item"><kbd>← →</kbd><span>Move</span></div>
+        <div class="ctrl-item"><kbd>SPACE</kbd><span>Shoot</span></div>
+        <div class="ctrl-item"><kbd>P</kbd><span>Pause</span></div>
+        <div class="ctrl-item"><span class="icon-star">★</span><span>Power-up</span></div>
+      </div>
+
+      <button id="btn-start" class="btn-arcade">INSERT COIN</button>
+      <p class="hi-score-line">HI-SCORE: <span id="title-hiscore">0</span></p>
+    </div>
+  </div>
+
+  <!-- Wave banner (shown briefly between waves) -->
+  <div id="screen-wave" class="screen screen--banner hidden">
+    <div class="wave-banner">
+      <span class="wave-label">WAVE</span>
+      <span class="wave-number" id="banner-wave-num">1</span>
+    </div>
+  </div>
+
+  <!-- Pause screen -->
+  <div id="screen-pause" class="screen hidden">
+    <div class="screen-inner">
+      <h2 class="screen-title">PAUSED</h2>
+      <button id="btn-resume" class="btn-arcade">RESUME</button>
+    </div>
+  </div>
+
+  <!-- Game Over screen -->
+  <div id="screen-gameover" class="screen hidden">
+    <div class="screen-inner">
+      <h2 class="screen-title glitch" data-text="GAME OVER">GAME OVER</h2>
+      <div class="result-row"><span>SCORE</span><span id="go-score">0</span></div>
+      <div class="result-row"><span>WAVE</span><span id="go-wave">1</span></div>
+      <div class="result-row hi"><span>HI-SCORE</span><span id="go-hiscore">0</span></div>
+      <button id="btn-restart" class="btn-arcade">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- ══ Mobile touch controls ══ -->
+  <div id="touch-controls" class="touch-controls hidden">
+    <button class="touch-btn" id="t-left">◀</button>
+    <button class="touch-btn touch-fire" id="t-fire">●</button>
+    <button class="touch-btn" id="t-right">▶</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
